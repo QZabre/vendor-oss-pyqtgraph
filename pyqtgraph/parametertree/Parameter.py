@@ -178,9 +178,12 @@ class Parameter(QtCore.QObject):
         
         if not isinstance(name, basestring):
             raise Exception("Parameter must have a string name specified in opts.")
+
         self.setName(name)
         
-        self.addChildren(self.opts.get('children', []))
+        if 'children' in self.opts:
+            self.addChildren(self.opts['children'])
+            del self.opts['children']
         
         self.opts['value'] = None
         if value is not None:
@@ -189,7 +192,7 @@ class Parameter(QtCore.QObject):
         if 'default' not in self.opts:
             self.opts['default'] = None
             self.setDefault(self.opts['value'])
-    
+
         ## Connect all state changed signals to the general sigStateChanged
         self.sigValueChanged.connect(lambda param, data: self.emitStateChanged('value', data))
         self.sigChildAdded.connect(lambda param, *data: self.emitStateChanged('childAdded', data))
