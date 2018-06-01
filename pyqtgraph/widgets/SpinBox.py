@@ -96,7 +96,7 @@ class SpinBox(QtGui.QAbstractSpinBox):
             'regex': fn.FLOAT_REGEX,
             'evalFunc': D,
             
-            'compactHeight': True,  # manually remove extra margin outside of text
+            'compactHeight': False,  # manually remove extra margin outside of text
         }
         
         self.decOpts = ['step', 'minStep']
