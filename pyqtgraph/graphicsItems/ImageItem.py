@@ -269,7 +269,8 @@ class ImageItem(GraphicsObject):
             while img.size > 2**16:
                 img = img[::2, ::2]
             mn, mx = np.nanmin(img), np.nanmax(img)
-            if mn == mx:
+            # mn and mx can still be NaN if the data is all-NaN
+            if mn == mx or np.isnan(mn) or np.isnan(mx):
                 mn = 0
                 mx = 255
             kargs['levels'] = [mn,mx]
