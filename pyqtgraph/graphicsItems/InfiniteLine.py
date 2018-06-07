@@ -36,7 +36,7 @@ class InfiniteLine(GraphicsObject):
 
     def __init__(self, pos=None, angle=90, pen=None, movable=False, bounds=None,
                  hoverPen=None, label=None, labelOpts=None, span=(0, 1), markers=None, 
-                 name=None):
+                 name=None, antiAlias=True):
         """
         =============== ==================================================================
         **Arguments:**
@@ -113,6 +113,8 @@ class InfiniteLine(GraphicsObject):
         if label is not None:
             labelOpts = {} if labelOpts is None else labelOpts
             self.label = InfLineLabel(self, text=label, **labelOpts)
+
+        self.antiAlias = antiAlias
 
     def setMovable(self, m):
         """Set whether the line is movable by the user."""
@@ -338,7 +340,8 @@ class InfiniteLine(GraphicsObject):
         return self._boundingRect
 
     def paint(self, p, *args):
-        p.setRenderHint(p.Antialiasing)
+        if self.antiAlias:
+            p.setRenderHint(p.Antialiasing)
         
         left, right = self._endPoints
         pen = self.currentPen
