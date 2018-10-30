@@ -1,3 +1,5 @@
+from math import isnan
+
 from ..Qt import QtGui, QtCore
 import os, weakref, re
 from ..pgcollections import OrderedDict
@@ -264,6 +266,13 @@ class Parameter(QtCore.QObject):
             value = self._interpretValue(value)
             if self.opts['value'] == value:
                 return value
+            # NaN is not even equal to itself, so the check above will not pass.
+            # We thus check for NaN separately. Not all values are numbers, so ignore TypeErrors
+            try:
+                if isnan(value) and isnan(self.opts['value']):
+                    return value
+            except TypeError:
+                pass
             self.opts['value'] = value
             self.sigValueChanged.emit(self, value)
         finally:
