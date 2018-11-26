@@ -325,10 +325,10 @@ class SpinBox(QtGui.QAbstractSpinBox):
         If the spin is integer type, the value will be coerced to int.
         Returns the actual value set.
         
-        If value is None, then the current value is used (this is for resetting
+        If value is None or nan, then the current value is used (this is for resetting
         the value after bounds, etc. have changed)
         """
-        if value is None:
+        if value is None or value != value:
             value = self.value()
         
         bounds = self.opts['bounds']

@@ -291,6 +291,8 @@ class WidgetParameterItem(ParameterItem):
                     sbOpts[k] = v
             self.widget.setOpts(**sbOpts)
             self.updateDisplayLabel()
+        else:
+            super().optsChanged(param, opts)  # takes care of visibility
         
             
 class EventProxy(QtCore.QObject):
@@ -440,6 +442,8 @@ class GroupParameterItem(ParameterItem):
     def optsChanged(self, param, changed):
         if 'addList' in changed:
             self.updateAddList()
+
+        super().optsChanged(param, changed)  # take care of visibility
                 
     def updateAddList(self):
         self.addWidget.blockSignals(True)
