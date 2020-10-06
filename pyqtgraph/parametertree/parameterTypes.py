@@ -450,7 +450,7 @@ class GroupParameterItem(ParameterItem):
         if 'addList' in opts:
             self.updateAddList()
 
-        super().optsChanged(param, changed)  # take care of visibility
+        super().optsChanged(param, opts)  # take care of visibility
                 
     def updateAddList(self):
         self.addWidget.blockSignals(True)
