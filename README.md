@@ -1,3 +1,10 @@
+N.B. This is NOT a fork of pyqtgraph, it is an amended copy of pyqtgraph, from a specific version and containing modifications specific to QS3. Upgrading or updating from newer versions of pyqtgraph will very likely have unintended nasty consequences. 
+
+Manqaged on the ETHZ side by Pol Welter (welterp@phys.ethz.ch), in collaboration with Mel Padden (mel@qzabre) and Mark Greenslade (mark@qzabre.com) on the QZabre side.
+
+MP 2020.11.12
+
+
 [![Build Status](https://travis-ci.org/pyqtgraph/pyqtgraph.svg?branch=develop)](https://travis-ci.org/pyqtgraph/pyqtgraph)
 [![codecov.io](http://codecov.io/github/pyqtgraph/pyqtgraph/coverage.svg?branch=develop)](http://codecov.io/github/pyqtgraph/pyqtgraph?branch=develop)
 
