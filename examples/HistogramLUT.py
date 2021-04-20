@@ -11,7 +11,7 @@ from pyqtgraph.Qt import QtGui, QtCore
 import pyqtgraph as pg
 
 
-app = QtGui.QApplication([])
+app = pg.mkQApp("Histogram Lookup Table Example")
 win = QtGui.QMainWindow()
 win.resize(800,600)
 win.show()
@@ -54,9 +54,5 @@ vb.autoRange()
 
 w.setImageItem(img)
 
-
-## Start Qt event loop unless running in interactive mode.
 if __name__ == '__main__':
-    import sys
-    if (sys.flags.interactive != 1) or not hasattr(QtCore, 'PYQT_VERSION'):
-        QtGui.QApplication.instance().exec_()
+    pg.mkQApp().exec_()

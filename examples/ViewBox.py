@@ -18,7 +18,7 @@ import numpy as np
 from pyqtgraph.Qt import QtGui, QtCore
 import pyqtgraph as pg
 
-app = QtGui.QApplication([])
+app = pg.mkQApp("ViewBox Example")
 mw = QtGui.QMainWindow()
 mw.setWindowTitle('pyqtgraph example: ViewBox')
 mw.show()
@@ -93,8 +93,5 @@ t = QtCore.QTimer()
 t.timeout.connect(updateData)
 t.start(50)
 
-## Start Qt event loop unless running in interactive mode.
 if __name__ == '__main__':
-    import sys
-    if (sys.flags.interactive != 1) or not hasattr(QtCore, 'PYQT_VERSION'):
-        QtGui.QApplication.instance().exec_()
+    pg.mkQApp().exec_()
